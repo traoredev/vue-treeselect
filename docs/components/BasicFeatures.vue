@@ -7,6 +7,14 @@
       v-model="value"
       />
     <treeselect-value :value="value" />
+    <treeselect
+      :multiple="true"
+      :options="options"
+      expand-to-selected-node
+      placeholder="Select your favourite(s)..."
+      v-model="selected"
+      />
+    <treeselect-value :value="selected" />
   </div>
 </template>
 
@@ -14,6 +22,7 @@
   export default {
     data: () => ({
       value: [],
+      selected: [ 'pear' ],
       options: [ {
         id: 'fruits',
         label: 'Fruits',

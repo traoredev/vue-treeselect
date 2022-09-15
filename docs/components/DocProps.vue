@@ -136,6 +136,11 @@
         defaultValue: code('0'),
         description: `How many levels of branch nodes should be automatically expanded when loaded. Set ${code('Infinity')} to make all branch nodes expanded by default.`,
       }, {
+        name: 'expandToSelectedNode',
+        type: 'Boolean',
+        defaultValue: code('false'),
+        description: `Whether nodes should be automatically expanded to the selected nodes.`,
+      }, {
         name: 'defaultOptions',
         type: `Boolean | ${code('node[]')}`,
         defaultValue: code('false'),

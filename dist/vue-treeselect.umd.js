@@ -1858,6 +1858,10 @@ var instanceId = 0;
       type: Number,
       default: 0
     },
+    expandToSelectedNode: {
+      type: Boolean,
+      default: false
+    },
     defaultOptions: {
       default: false
     },
@@ -2911,6 +2915,14 @@ var instanceId = 0;
           } else if (!isLoaded && normalized.isExpanded) {
             _this17.loadChildrenOptions(normalized);
           }
+        }
+
+        var isSelectedNode = _this17.forest.selectedNodeIds.includes(id);
+
+        if (_this17.expandToSelectedNode && isSelectedNode) {
+          normalized.ancestors.forEach(function (ancestor) {
+            ancestor.isExpanded = true;
+          });
         }
 
         normalized.ancestors.forEach(function (ancestor) {

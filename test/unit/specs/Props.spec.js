@@ -1095,6 +1095,8 @@ describe('Props', () => {
       expect(bb.isExpanded).toBe(true)
     })
 
+    // TODO: `with expandToSelectedNode and selected nodes`  Should expand to selected nodes
+
     it('should request children options loading when expanded', () => {
       // TODO: 需要考虑服务端渲染的情况
       const loadOptions = jasmine.createSpy('loadOptions')

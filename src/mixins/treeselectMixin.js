@@ -250,6 +250,14 @@ export default {
     },
 
     /**
+     * If nodes should be automatically expanded to the selected nodes.
+     */
+    expandToSelectedNode: {
+      type: Boolean,
+      default: false,
+    },
+
+    /**
      * The default set of options to show before the user starts searching. Used for async search mode.
      * When set to `true`, the results for search query as a empty string will be autoloaded.
      * @type {boolean|node[]}
@@ -1619,6 +1627,13 @@ export default {
             } else if (!isLoaded && normalized.isExpanded) {
               this.loadChildrenOptions(normalized)
             }
+          }
+          // Expand to selected nodes
+          const isSelectedNode = this.forest.selectedNodeIds.includes(id)
+          if (this.expandToSelectedNode && isSelectedNode) {
+            normalized.ancestors.forEach(ancestor => {
+              ancestor.isExpanded = true
+            })
           }
 
           normalized.ancestors.forEach(ancestor => ancestor.count[ALL_DESCENDANTS]++)
